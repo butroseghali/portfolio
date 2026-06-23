@@ -41,8 +41,32 @@ main{padding-top:60px;}
 .hero{
     height:100vh;display:flex;flex-direction:column;
     justify-content:center;align-items:center;text-align:center;
+    position:relative;
+    overflow:hidden;
 }
-.hero h1{font-size:48px;font-weight:700;}
+
+.hero::before{
+    content:'';position:absolute;top:0;left:0;right:0;bottom:0;
+    background:linear-gradient(135deg, rgba(15,23,42,0.85) 0%, rgba(15,23,42,0.7) 100%);
+    z-index:1;
+}
+
+.hero-content{
+    position:relative;z-index:2;max-width:600px;
+}
+
+.hero-image{
+    position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+    width:300px;height:300px;z-index:0;
+}
+
+.hero-image img{
+    width:100%;height:100%;object-fit:cover;border-radius:50%;
+    border:4px solid #38bdf8;
+    box-shadow:0 0 40px rgba(56,189,248,0.3);
+}
+
+.hero h1{font-size:48px;font-weight:700;margin-bottom:10px;}
 .hero span{color:#38bdf8;}
 .hero p{margin-top:15px;color:#94a3b8;font-size:16px;}
 .btn{
@@ -67,17 +91,17 @@ section{padding:80px 50px;}
     transform:translateY(-5px);background:#334155;
     box-shadow:0 10px 25px rgba(56,189,248,0.2);
 }
+.card h3{color:#38bdf8;margin-bottom:10px;}
 .card p{color:#cbd5e1;font-size:14px;line-height:1.6;}
 
 .portfolio img{
     width:100%;border-radius:10px;cursor:pointer;
     transition:all 0.3s;border:2px solid transparent;
     background:#1e293b;
+    aspect-ratio:4/3;
+    object-fit:cover;
 }
 .portfolio img:hover{opacity:0.9;transform:scale(1.02);border-color:#38bdf8;}
-.portfolio img:not([alt]{
-    background:#374151;
-}
 
 .about{max-width:800px;margin:auto;text-align:center;color:#cbd5e1;line-height:1.8;font-size:16px;}
 
@@ -130,6 +154,9 @@ footer{text-align:center;padding:20px;background:#020617;color:#64748b;}
     .hero h1{font-size:32px;}
     .hero p{font-size:14px;}
     
+    .hero-image{width:200px;height:200px;}
+    .hero-image img{border-width:3px;}
+    
     .services,.portfolio{grid-template-columns:1fr;}
     
     footer{padding:15px;font-size:14px;}
@@ -140,8 +167,12 @@ footer{text-align:center;padding:20px;background:#020617;color:#64748b;}
     .logo{font-size:16px;}
     section{padding:40px 15px;}
     .hero h1{font-size:24px;}
+    .hero p{font-size:13px;}
     .btn{padding:10px 20px;font-size:14px;}
     .section-title{font-size:22px;}
+    
+    .hero-image{width:150px;height:150px;}
+    .hero-image img{border-width:2px;}
 }
 </style>
 </head>
@@ -165,9 +196,14 @@ footer{text-align:center;padding:20px;background:#020617;color:#64748b;}
 <main id="main-content">
 
 <section class="hero" id="home">
+<div class="hero-image">
+<img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop" alt="Butrose Ochieng - UI/UX Designer & Web Developer">
+</div>
+<div class="hero-content">
 <h1>We Design <span>Digital Experiences</span></h1>
 <p>UI/UX Designer | Web Developer | Branding & Marketing</p>
 <button class="btn" onclick="scrollToSection('portfolio')">View My Work</button>
+</div>
 </section>
 
 <section id="about">
@@ -184,19 +220,19 @@ impactful results.
 <h2 class="section-title">Services</h2>
 <div class="services">
 <div class="card">
-<h3 style="color:#38bdf8;margin-bottom:10px;">🎨 UI/UX Design</h3>
+<h3>🎨 UI/UX Design</h3>
 <p>Creating intuitive and beautiful user interfaces that enhance user engagement and satisfaction.</p>
 </div>
 <div class="card">
-<h3 style="color:#38bdf8;margin-bottom:10px;">💻 Web Development</h3>
+<h3>💻 Web Development</h3>
 <p>Building responsive, fast, and scalable web applications using modern technologies.</p>
 </div>
 <div class="card">
-<h3 style="color:#38bdf8;margin-bottom:10px;">🎯 Branding</h3>
+<h3>🎯 Branding</h3>
 <p>Developing strong brand identities that resonate with your target audience.</p>
 </div>
 <div class="card">
-<h3 style="color:#38bdf8;margin-bottom:10px;">📱 Social Media Marketing</h3>
+<h3>📱 Social Media Marketing</h3>
 <p>Creating engaging content strategies that boost your online presence and reach.</p>
 </div>
 </div>
