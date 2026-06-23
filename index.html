@@ -3,8 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="UI/UX Designer & Web Developer - Portfolio of Butrose Ochieng. Specializing in digital experiences, web development, and branding.">
+<meta name="keywords" content="UI/UX Design, Web Development, Branding, Digital Design, Portfolio">
+<meta name="author" content="Butrose Ochieng">
+<meta property="og:title" content="Butrose Ochieng | Portfolio">
+<meta property="og:description" content="UI/UX Designer & Web Developer creating modern digital experiences">
+<meta property="og:type" content="website">
 <title>Butrose Ochieng | Portfolio</title>
 
+<link rel="icon" type="image/x-icon" href="favicon.ico">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
@@ -14,69 +21,139 @@ body{background:#0f172a;color:white;scroll-behavior:smooth;}
 header{
     display:flex;justify-content:space-between;align-items:center;
     padding:20px 50px;position:fixed;width:100%;background:#0f172a;z-index:1000;
+    box-shadow:0 2px 10px rgba(0,0,0,0.3);
 }
-.logo{color:#38bdf8;font-weight:700;}
+.logo{color:#38bdf8;font-weight:700;font-size:20px;}
 nav{display:flex;}
-nav a{color:white;margin-left:20px;text-decoration:none;}
-.menu-toggle{display:none;cursor:pointer;}
+nav a{
+    color:white;margin-left:20px;text-decoration:none;
+    transition:color 0.3s;position:relative;
+}
+nav a:hover,nav a.active{color:#38bdf8;}
+nav a.active::after{content:'';position:absolute;bottom:-5px;left:0;width:100%;height:2px;background:#38bdf8;}
+.menu-toggle{
+    display:none;cursor:pointer;font-size:24px;
+    background:none;border:none;color:white;
+}
+
+main{padding-top:60px;}
 
 .hero{
     height:100vh;display:flex;flex-direction:column;
     justify-content:center;align-items:center;text-align:center;
 }
-.hero h1{font-size:48px;}
+.hero h1{font-size:48px;font-weight:700;}
 .hero span{color:#38bdf8;}
-.hero p{margin-top:15px;color:#94a3b8;}
+.hero p{margin-top:15px;color:#94a3b8;font-size:16px;}
 .btn{
     margin-top:20px;padding:12px 25px;background:#38bdf8;
     border:none;color:white;cursor:pointer;border-radius:5px;
+    font-weight:600;transition:all 0.3s;
 }
+.btn:hover{background:#0ea5e9;transform:translateY(-2px);box-shadow:0 5px 15px rgba(56,189,248,0.3);}
+.btn:active{transform:translateY(0);}
 
 section{padding:80px 50px;}
-.section-title{text-align:center;margin-bottom:40px;font-size:28px;}
+.section-title{text-align:center;margin-bottom:40px;font-size:28px;font-weight:700;}
 
 .services,.portfolio{
     display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;
 }
 .card{
     background:#1e293b;padding:20px;border-radius:10px;
-    transition:0.3s;
+    transition:all 0.3s;border:1px solid #334155;
 }
-.card:hover{transform:translateY(-5px);}
+.card:hover{
+    transform:translateY(-5px);background:#334155;
+    box-shadow:0 10px 25px rgba(56,189,248,0.2);
+}
+.card p{color:#cbd5e1;font-size:14px;line-height:1.6;}
 
 .portfolio img{
     width:100%;border-radius:10px;cursor:pointer;
-    transition:0.3s;
+    transition:all 0.3s;border:2px solid transparent;
+    background:#1e293b;
 }
-.portfolio img:hover{opacity:0.8;}
+.portfolio img:hover{opacity:0.9;transform:scale(1.02);border-color:#38bdf8;}
+.portfolio img:not([alt]{
+    background:#374151;
+}
 
-.about{max-width:800px;margin:auto;text-align:center;color:#94a3b8;}
+.about{max-width:800px;margin:auto;text-align:center;color:#cbd5e1;line-height:1.8;font-size:16px;}
 
 .contact{text-align:center;}
+.contact p{margin:10px 0;color:#cbd5e1;}
 
-footer{text-align:center;padding:20px;background:#020617;}
+.social-links{
+    margin-top:30px;display:flex;justify-content:center;gap:20px;
+}
+.social-links a{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:40px;height:40px;background:#1e293b;color:#38bdf8;
+    text-decoration:none;border-radius:50%;transition:all 0.3s;
+    border:1px solid #334155;
+}
+.social-links a:hover{background:#38bdf8;color:white;transform:translateY(-3px);}
+
+footer{text-align:center;padding:20px;background:#020617;color:#64748b;}
 
 .whatsapp{
     position:fixed;bottom:20px;right:20px;
     background:#25D366;color:white;padding:12px;border-radius:50%;
-    text-decoration:none;font-size:20px;
+    text-decoration:none;font-size:24px;display:flex;align-items:center;justify-content:center;
+    transition:all 0.3s;box-shadow:0 4px 12px rgba(37,211,102,0.3);
+    width:50px;height:50px;
 }
+.whatsapp:hover{transform:scale(1.1);box-shadow:0 6px 16px rgba(37,211,102,0.4);}
+
+/* ACCESSIBILITY */
+.skip-link{
+    position:absolute;top:-40px;left:0;background:#38bdf8;color:white;
+    padding:8px;text-decoration:none;z-index:100;
+}
+.skip-link:focus{top:0;}
 
 /* MOBILE */
 @media(max-width:768px){
-    nav{display:none;flex-direction:column;background:#0f172a;position:absolute;top:60px;right:0;width:200px;}
+    header{padding:15px 20px;}
+    .logo{font-size:18px;}
+    nav{
+        display:none;flex-direction:column;background:#1e293b;
+        position:absolute;top:55px;right:0;width:100%;padding:20px;
+        box-shadow:0 4px 12px rgba(0,0,0,0.3);
+    }
     nav.active{display:flex;}
+    nav a{margin:10px 0;margin-left:0;}
     .menu-toggle{display:block;}
+    
+    section{padding:60px 20px;}
+    .hero h1{font-size:32px;}
+    .hero p{font-size:14px;}
+    
+    .services,.portfolio{grid-template-columns:1fr;}
+    
+    footer{padding:15px;font-size:14px;}
+}
+
+@media(max-width:480px){
+    header{padding:12px 15px;}
+    .logo{font-size:16px;}
+    section{padding:40px 15px;}
+    .hero h1{font-size:24px;}
+    .btn{padding:10px 20px;font-size:14px;}
+    .section-title{font-size:22px;}
 }
 </style>
 </head>
 
 <body>
 
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
 <header>
 <h2 class="logo">Butrose</h2>
-<div class="menu-toggle" onclick="toggleMenu()">☰</div>
-<nav id="nav">
+<button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
+<nav id="nav" role="navigation">
 <a href="#home">Home</a>
 <a href="#about">About</a>
 <a href="#services">Services</a>
@@ -84,6 +161,8 @@ footer{text-align:center;padding:20px;background:#020617;}
 <a href="#contact">Contact</a>
 </nav>
 </header>
+
+<main id="main-content">
 
 <section class="hero" id="home">
 <h1>We Design <span>Digital Experiences</span></h1>
@@ -95,53 +174,111 @@ footer{text-align:center;padding:20px;background:#020617;}
 <h2 class="section-title">About Me</h2>
 <p class="about">
 Information Systems graduate specializing in UI/UX design, web development, and digital branding.
-I build modern, user-friendly solutions that help businesses grow.
+I build modern, user-friendly solutions that help businesses grow. With expertise in creating 
+seamless digital experiences, I combine design thinking with technical skills to deliver 
+impactful results.
 </p>
 </section>
 
 <section id="services">
 <h2 class="section-title">Services</h2>
 <div class="services">
-<div class="card">UI/UX Design</div>
-<div class="card">Web Development</div>
-<div class="card">Branding</div>
-<div class="card">Social Media Marketing</div>
+<div class="card">
+<h3 style="color:#38bdf8;margin-bottom:10px;">🎨 UI/UX Design</h3>
+<p>Creating intuitive and beautiful user interfaces that enhance user engagement and satisfaction.</p>
+</div>
+<div class="card">
+<h3 style="color:#38bdf8;margin-bottom:10px;">💻 Web Development</h3>
+<p>Building responsive, fast, and scalable web applications using modern technologies.</p>
+</div>
+<div class="card">
+<h3 style="color:#38bdf8;margin-bottom:10px;">🎯 Branding</h3>
+<p>Developing strong brand identities that resonate with your target audience.</p>
+</div>
+<div class="card">
+<h3 style="color:#38bdf8;margin-bottom:10px;">📱 Social Media Marketing</h3>
+<p>Creating engaging content strategies that boost your online presence and reach.</p>
+</div>
 </div>
 </section>
 
 <section id="portfolio">
 <h2 class="section-title">Portfolio</h2>
 <div class="portfolio">
-<img src="https://via.placeholder.com/300x200">
-<img src="https://via.placeholder.com/300x200">
-<img src="https://via.placeholder.com/300x200">
-<img src="https://via.placeholder.com/300x200">
+<img src="https://via.placeholder.com/300x200?text=Project+1" alt="Project 1 - UI/UX Design Case Study">
+<img src="https://via.placeholder.com/300x200?text=Project+2" alt="Project 2 - Web Development">
+<img src="https://via.placeholder.com/300x200?text=Project+3" alt="Project 3 - Branding Work">
+<img src="https://via.placeholder.com/300x200?text=Project+4" alt="Project 4 - Social Media Campaign">
 </div>
 </section>
 
 <section id="contact">
-<h2 class="section-title">Contact</h2>
+<h2 class="section-title">Contact Me</h2>
 <div class="contact">
-<p>Email: butroseomondi@gmail.com</p>
-<p>Phone: +254 768 600 103</p>
-<button class="btn">Hire Me</button>
+<p><strong>Email:</strong> <a href="mailto:butroseomondi@gmail.com" style="color:#38bdf8;text-decoration:none;">butroseomondi@gmail.com</a></p>
+<p><strong>Phone:</strong> <a href="tel:+254768600103" style="color:#38bdf8;text-decoration:none;">+254 768 600 103</a></p>
+<button class="btn" onclick="window.location.href='mailto:butroseomondi@gmail.com?subject=Let\'s%20Work%20Together'">Hire Me</button>
+
+<div class="social-links">
+<a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="Connect on LinkedIn">in</a>
+<a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="View on GitHub">⚙️</a>
+<a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter" title="Follow on Twitter">𝕏</a>
+</div>
 </div>
 </section>
 
-<a href="https://wa.me/254768600103" class="whatsapp">💬</a>
+</main>
+
+<a href="https://wa.me/254768600103" class="whatsapp" aria-label="Contact via WhatsApp" title="Message me on WhatsApp">💬</a>
 
 <footer>
-<p>© 2026 Butrose Ochieng</p>
+<p>&copy; 2026 Butrose Ochieng. All rights reserved.</p>
 </footer>
 
 <script>
-function toggleMenu(){
-    document.getElementById("nav").classList.toggle("active");
+// Update active nav link based on scroll position
+function updateActiveLink() {
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('nav a');
+    
+    let current = '';
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (pageYOffset >= sectionTop - 200) {
+            current = section.getAttribute('id');
+        }
+    });
+    
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href').slice(1) === current) {
+            link.classList.add('active');
+        }
+    });
 }
+
+function toggleMenu(){
+    const nav = document.getElementById("nav");
+    const menuToggle = document.querySelector('.menu-toggle');
+    nav.classList.toggle("active");
+    menuToggle.setAttribute('aria-expanded', nav.classList.contains('active'));
+}
+
+// Close mobile menu when a link is clicked
+document.querySelectorAll('nav a').forEach(link => {
+    link.addEventListener('click', () => {
+        document.getElementById("nav").classList.remove("active");
+        document.querySelector('.menu-toggle').setAttribute('aria-expanded', 'false');
+    });
+});
 
 function scrollToSection(id){
     document.getElementById(id).scrollIntoView({behavior:"smooth"});
 }
+
+// Update active link on scroll
+window.addEventListener('scroll', updateActiveLink);
+window.addEventListener('load', updateActiveLink);
 </script>
 
 </body>
